@@ -1,0 +1,129 @@
+
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/components/ui/sidebar';
+import { 
+  LayoutDashboard, 
+  Wallet, 
+  BarChart3, 
+  Server,
+  CircleDollarSign,
+  Settings
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+type SidebarProps = {
+  sidebarCollapsed: boolean;
+};
+
+export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
+  const location = useLocation();
+  
+  const mainMenuItems = [
+    {
+      title: 'Dashboard',
+      url: '/',
+      icon: LayoutDashboard,
+    },
+    {
+      title: 'Transactions',
+      url: '/transactions',
+      icon: Wallet,
+    },
+    {
+      title: 'Analytics',
+      url: '/analytics',
+      icon: BarChart3,
+    },
+    {
+      title: 'Server Status',
+      url: '/server-status',
+      icon: Server,
+    },
+  ];
+
+  const userMenuItems = [
+    {
+      title: 'Accounts',
+      url: '/accounts',
+      icon: CircleDollarSign,
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: Settings,
+    },
+  ];
+
+  return (
+    <Sidebar className={cn("transition-all duration-300", 
+      sidebarCollapsed ? "w-16" : "w-64"
+    )}>
+      <div className="p-3 flex items-center justify-center h-16 border-b">
+        {!sidebarCollapsed ? (
+          <h1 className="text-xl font-bold tracking-tight">BalanceBeam</h1>
+        ) : (
+          <CircleDollarSign size={28} className="text-primary" />
+        )}
+      </div>
+      <SidebarContent>
+        <SidebarGroup>
+          {!sidebarCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {mainMenuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link 
+                      to={item.url} 
+                      className={cn("flex items-center space-x-2", 
+                        location.pathname === item.url ? "text-primary font-medium" : "",
+                        sidebarCollapsed ? "justify-center" : ""
+                      )}
+                    >
+                      <item.icon size={20} />
+                      {!sidebarCollapsed && <span>{item.title}</span>}
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        
+        <SidebarGroup>
+          {!sidebarCollapsed && <SidebarGroupLabel>User</SidebarGroupLabel>}
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {userMenuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link 
+                      to={item.url} 
+                      className={cn("flex items-center space-x-2", 
+                        location.pathname === item.url ? "text-primary font-medium" : "",
+                        sidebarCollapsed ? "justify-center" : ""
+                      )}
+                    >
+                      <item.icon size={20} />
+                      {!sidebarCollapsed && <span>{item.title}</span>}
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+}
