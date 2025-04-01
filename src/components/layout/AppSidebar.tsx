@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/sidebar';
 import { 
   LayoutDashboard, 
-  Wallet, 
+  Users, 
   BarChart3, 
   Server,
   CircleDollarSign,
@@ -35,9 +35,9 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
       icon: LayoutDashboard,
     },
     {
-      title: 'Transactions',
-      url: '/transactions',
-      icon: Wallet,
+      title: 'Accounts',
+      url: '/accounts',
+      icon: Users,
     },
     {
       title: 'Analytics',
@@ -86,7 +86,9 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                     <Link 
                       to={item.url} 
                       className={cn("flex items-center space-x-2", 
-                        location.pathname === item.url ? "text-primary font-medium" : "",
+                        location.pathname === item.url || 
+                        (item.url !== '/' && location.pathname.startsWith(item.url)) 
+                          ? "text-primary font-medium" : "",
                         sidebarCollapsed ? "justify-center" : ""
                       )}
                     >
