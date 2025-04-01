@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -6,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, PieChart } from 'lucide-react';
 import { users } from '@/lib/mockData';
-import { DonutChart } from '@/components/ui/chart';
+import { DonutChart } from '@/components/ui/donut-chart';
 
 const UserDetail = () => {
   const { userId } = useParams<{ userId: string }>();
