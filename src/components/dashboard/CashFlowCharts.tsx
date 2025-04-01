@@ -1,10 +1,23 @@
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  BarChart,
+  Bar,
+} from "recharts";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, BarChart, Bar } from 'recharts';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-const EXPENSE_COLORS = ['#a0b41c', '#b9cb49', '#8a9919', '#c6d566', '#738015'];
+const EXPENSE_COLORS = ["#a0b41c", "#b9cb49", "#8a9919", "#c6d566", "#738015"];
 
 type ExpenseData = {
   name: string;
@@ -28,7 +41,11 @@ type CashFlowChartsProps = {
   }>;
 };
 
-const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }: CashFlowChartsProps) => {
+const CashFlowCharts = ({
+  expenseData,
+  timeSeriesData,
+  categoryComparisonData,
+}: CashFlowChartsProps) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 dashboard-section">
       <Card className="lg:col-span-1 animate-fade-in [animation-delay:400ms]">
@@ -48,13 +65,25 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
                   fill="#8884d8"
                   dataKey="value"
                   nameKey="name"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={({ name, percent }) =>
+                    `${name} ${(percent * 100).toFixed(0)}%`
+                  }
                 >
                   {expenseData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color || EXPENSE_COLORS[index % EXPENSE_COLORS.length]} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={
+                        entry.color ||
+                        EXPENSE_COLORS[index % EXPENSE_COLORS.length]
+                      }
+                    />
                   ))}
                 </Pie>
-                <Legend layout="horizontal" verticalAlign="bottom" align="center" />
+                <Legend
+                  layout="horizontal"
+                  verticalAlign="bottom"
+                  align="center"
+                />
                 <Tooltip formatter={(value) => [`${value} SEK`, "Amount"]} />
               </PieChart>
             </ResponsiveContainer>
@@ -75,24 +104,27 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
             <TabsContent value="area">
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={timeSeriesData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                  <AreaChart
+                    data={timeSeriesData}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                  >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
-                    <Area 
-                      type="monotone" 
-                      dataKey="income" 
+                    <Area
+                      type="monotone"
+                      dataKey="income"
                       name="Income"
-                      stroke="#a0b41c" 
-                      fill="rgba(160, 180, 28, 0.2)" 
+                      stroke="#a0b41c"
+                      fill="rgba(160, 180, 28, 0.2)"
                     />
-                    <Area 
-                      type="monotone" 
-                      dataKey="expenses" 
+                    <Area
+                      type="monotone"
+                      dataKey="expenses"
                       name="Expenses"
-                      stroke="#ef4444" 
-                      fill="rgba(239, 68, 68, 0.2)" 
+                      stroke="#ef4444"
+                      fill="rgba(239, 68, 68, 0.2)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -101,7 +133,10 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
             <TabsContent value="bar" className="h-[300px]">
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={categoryComparisonData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                  <BarChart
+                    data={categoryComparisonData}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                  >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="category" />
                     <YAxis />
