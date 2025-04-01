@@ -66,7 +66,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				profit: '#22c55e',
+				profit: '#a0b41c',
 				loss: '#ef4444',
 			},
 			borderRadius: {

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, BarChart, Bar } from 'recharts';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const EXPENSE_COLORS = ['#8b5cf6', '#6366f1', '#ec4899', '#f43f5e', '#f97316', '#eab308', '#84cc16', '#22c55e'];
+const EXPENSE_COLORS = ['#a0b41c', '#b9cb49', '#8a9919', '#c6d566', '#738015'];
 
 type ExpenseData = {
   name: string;
@@ -33,7 +33,7 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 dashboard-section">
       <Card className="lg:col-span-1 animate-fade-in [animation-delay:400ms]">
         <CardHeader>
-          <CardTitle>Spending by Category</CardTitle>
+          <CardTitle>Loans taken out by Category</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
@@ -55,7 +55,7 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
                   ))}
                 </Pie>
                 <Legend layout="horizontal" verticalAlign="bottom" align="center" />
-                <Tooltip formatter={(value) => [`$${value}`, "Amount"]} />
+                <Tooltip formatter={(value) => [`${value} SEK`, "Amount"]} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -79,13 +79,13 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="date" />
                     <YAxis />
-                    <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                    <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                     <Area 
                       type="monotone" 
                       dataKey="income" 
                       name="Income"
-                      stroke="#22c55e" 
-                      fill="rgba(34, 197, 94, 0.2)" 
+                      stroke="#a0b41c" 
+                      fill="rgba(160, 180, 28, 0.2)" 
                     />
                     <Area 
                       type="monotone" 
@@ -105,9 +105,9 @@ const CashFlowCharts = ({ expenseData, timeSeriesData, categoryComparisonData }:
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="category" />
                     <YAxis />
-                    <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                    <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                     <Legend />
-                    <Bar dataKey="income" name="Income" fill="#22c55e" />
+                    <Bar dataKey="income" name="Income" fill="#a0b41c" />
                     <Bar dataKey="expenses" name="Expenses" fill="#ef4444" />
                   </BarChart>
                 </ResponsiveContainer>

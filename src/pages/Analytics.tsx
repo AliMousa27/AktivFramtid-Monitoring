@@ -7,31 +7,29 @@ import { Circle } from 'lucide-react';
 
 // Mock data
 const monthlyData = [
-  { month: 'Jan', income: 8000, expenses: 6200, savings: 1800 },
-  { month: 'Feb', income: 7800, expenses: 5900, savings: 1900 },
-  { month: 'Mar', income: 9500, expenses: 7100, savings: 2400 },
-  { month: 'Apr', income: 8900, expenses: 6700, savings: 2200 },
-  { month: 'May', income: 9200, expenses: 6500, savings: 2700 },
-  { month: 'Jun', income: 8700, expenses: 7100, savings: 1600 },
-  { month: 'Jul', income: 9600, expenses: 7400, savings: 2200 },
-  { month: 'Aug', income: 10200, expenses: 7800, savings: 2400 },
-  { month: 'Sep', income: 9800, expenses: 7200, savings: 2600 },
-  { month: 'Oct', income: 10500, expenses: 7900, savings: 2600 },
-  { month: 'Nov', income: 11000, expenses: 8200, savings: 2800 },
-  { month: 'Dec', income: 12000, expenses: 8800, savings: 3200 },
+  { month: 'Jan', income: 8000, expenses: 6200, profit: 1800 },
+  { month: 'Feb', income: 7800, expenses: 5900, profit: 1900 },
+  { month: 'Mar', income: 9500, expenses: 7100, profit: 2400 },
+  { month: 'Apr', income: 8900, expenses: 6700, profit: 2200 },
+  { month: 'May', income: 9200, expenses: 6500, profit: 2700 },
+  { month: 'Jun', income: 8700, expenses: 7100, profit: 1600 },
+  { month: 'Jul', income: 9600, expenses: 7400, profit: 2200 },
+  { month: 'Aug', income: 10200, expenses: 7800, profit: 2400 },
+  { month: 'Sep', income: 9800, expenses: 7200, profit: 2600 },
+  { month: 'Oct', income: 10500, expenses: 7900, profit: 2600 },
+  { month: 'Nov', income: 11000, expenses: 8200, profit: 2800 },
+  { month: 'Dec', income: 12000, expenses: 8800, profit: 3200 },
 ];
 
 const categoryData = [
-  { name: 'Housing', value: 35 },
-  { name: 'Food', value: 20 },
-  { name: 'Transport', value: 15 },
-  { name: 'Entertainment', value: 10 },
-  { name: 'Utilities', value: 8 },
-  { name: 'Shopping', value: 7 },
-  { name: 'Other', value: 5 },
+  { name: 'Team Accounts', value: 35 },
+  { name: 'Cups', value: 20 },
+  { name: 'Equipment', value: 15 },
+  { name: 'Memberships', value: 10 },
+  { name: 'Market Sales', value: 20 },
 ];
 
-const COLORS = ['#8b5cf6', '#6366f1', '#ec4899', '#f43f5e', '#f97316', '#eab308', '#84cc16'];
+const COLORS = ['#a0b41c', '#b9cb49', '#8a9919', '#c6d566', '#738015'];
 
 const incomeVsExpensesData = [
   { year: '2020', income: 85000, expenses: 65000 },
@@ -40,7 +38,7 @@ const incomeVsExpensesData = [
   { year: '2023', income: 115000, expenses: 82000 },
 ];
 
-const savingsData = [
+const profitData = [
   { year: '2020', amount: 20000 },
   { year: '2021', amount: 22000 },
   { year: '2022', amount: 25000 },
@@ -64,11 +62,11 @@ const Analytics = () => {
                   <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                   <XAxis dataKey="month" />
                   <YAxis />
-                  <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                  <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                   <Legend />
-                  <Bar dataKey="income" name="Income" fill="#22c55e" />
+                  <Bar dataKey="income" name="Income" fill="#a0b41c" />
                   <Bar dataKey="expenses" name="Expenses" fill="#ef4444" />
-                  <Bar dataKey="savings" name="Savings" fill="#8b5cf6" />
+                  <Bar dataKey="profit" name="Profit" fill="#8b5cf6" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -114,7 +112,7 @@ const Analytics = () => {
           <Tabs defaultValue="incomeVsExpenses">
             <TabsList className="mb-4">
               <TabsTrigger value="incomeVsExpenses">Income vs Expenses</TabsTrigger>
-              <TabsTrigger value="savings">Savings Trend</TabsTrigger>
+              <TabsTrigger value="profit">Profit Trend</TabsTrigger>
             </TabsList>
             <TabsContent value="incomeVsExpenses">
               <div className="h-[400px]">
@@ -126,16 +124,16 @@ const Analytics = () => {
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="year" />
                     <YAxis />
-                    <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                    <Tooltip formatter={(value) => [`${value} SEK`, ""]} />
                     <Legend />
-                    <Line type="monotone" dataKey="income" name="Income" stroke="#22c55e" strokeWidth={2} dot={{ r: 5 }} activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="income" name="Income" stroke="#a0b41c" strokeWidth={2} dot={{ r: 5 }} activeDot={{ r: 8 }} />
                     <Line type="monotone" dataKey="expenses" name="Expenses" stroke="#ef4444" strokeWidth={2} dot={{ r: 5 }} activeDot={{ r: 8 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center p-4 border rounded-lg">
-                  <Circle className="text-profit mr-2" size={16} fill="#22c55e" />
+                  <Circle className="text-profit mr-2" size={16} fill="#a0b41c" />
                   <div>
                     <h3 className="text-sm font-medium">Income Growth</h3>
                     <p className="text-2xl font-bold">+35.3%</p>
@@ -152,20 +150,20 @@ const Analytics = () => {
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="savings">
+            <TabsContent value="profit">
               <div className="h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
-                    data={savingsData}
+                    data={profitData}
                     margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
                   >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                     <XAxis dataKey="year" />
                     <YAxis />
-                    <Tooltip formatter={(value) => [`$${value}`, "Amount"]} />
-                    <Bar dataKey="amount" name="Savings" fill="#8b5cf6">
-                      {savingsData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill="#8b5cf6" />
+                    <Tooltip formatter={(value) => [`${value} SEK`, "Amount"]} />
+                    <Bar dataKey="amount" name="Profit" fill="#a0b41c">
+                      {profitData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill="#a0b41c" />
                       ))}
                     </Bar>
                   </BarChart>
@@ -173,9 +171,9 @@ const Analytics = () => {
               </div>
               <div className="mt-4 p-4 border rounded-lg">
                 <div className="flex items-center">
-                  <Circle className="text-primary mr-2" size={16} fill="#8b5cf6" />
+                  <Circle className="text-primary mr-2" size={16} fill="#a0b41c" />
                   <div>
-                    <h3 className="text-sm font-medium">Savings Growth</h3>
+                    <h3 className="text-sm font-medium">Profit Growth</h3>
                     <p className="text-2xl font-bold">+65.0%</p>
                     <p className="text-sm text-muted-foreground">From 2020 to 2023</p>
                   </div>

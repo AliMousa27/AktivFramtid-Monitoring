@@ -4,18 +4,14 @@ import CashFlowSummary from '@/components/dashboard/CashFlowSummary';
 import CashFlowCharts from '@/components/dashboard/CashFlowCharts';
 import TransactionsTable from '@/components/dashboard/TransactionsTable';
 import TimeFilter from '@/components/dashboard/TimeFilter';
-import FinancialTip from '@/components/dashboard/FinancialTip';
 
 // Mock data - in a real app, this would come from an API
 const mockExpenseData = [
-  { name: 'Food', value: 1200, color: '#8b5cf6' },
-  { name: 'Rent', value: 2500, color: '#6366f1' },
-  { name: 'Transport', value: 450, color: '#ec4899' },
-  { name: 'Entertainment', value: 350, color: '#f43f5e' },
-  { name: 'Utilities', value: 400, color: '#f97316' },
-  { name: 'Shopping', value: 680, color: '#eab308' },
-  { name: 'Travel', value: 1200, color: '#84cc16' },
-  { name: 'Other', value: 300, color: '#22c55e' },
+  { name: 'Team Accounts', value: 1200, color: '#a0b41c' },
+  { name: 'Cups', value: 2500, color: '#b9cb49' },
+  { name: 'Equipment', value: 450, color: '#8a9919' },
+  { name: 'Memberships', value: 350, color: '#c6d566' },
+  { name: 'Market Sales', value: 400, color: '#738015' },
 ];
 
 const mockTimeSeriesData = [
@@ -34,36 +30,26 @@ const mockTimeSeriesData = [
 ];
 
 const mockCategoryComparisonData = [
-  { category: 'Salary', income: 9500, expenses: 0 },
-  { category: 'Freelance', income: 2500, expenses: 0 },
-  { category: 'Housing', income: 0, expenses: 2500 },
-  { category: 'Food', income: 0, expenses: 1200 },
-  { category: 'Transport', income: 0, expenses: 450 },
-  { category: 'Entertainment', income: 0, expenses: 350 },
-  { category: 'Shopping', income: 0, expenses: 680 },
+  { category: 'Team Accounts', income: 9500, expenses: 0 },
+  { category: 'Cups', income: 2500, expenses: 0 },
+  { category: 'Equipment', income: 0, expenses: 2500 },
+  { category: 'Memberships', income: 0, expenses: 1200 },
+  { category: 'Market Sales', income: 0, expenses: 450 },
 ];
 
 const mockTransactions = [
   { id: '1', date: '2023-12-01', description: 'Monthly Salary', category: 'salary', amount: 9500, type: 'income' as const },
-  { id: '2', date: '2023-12-03', description: 'Apartment Rent', category: 'housing', amount: 2500, type: 'expense' as const },
-  { id: '3', date: '2023-12-05', description: 'Grocery Store', category: 'food', amount: 150, type: 'expense' as const },
-  { id: '4', date: '2023-12-08', description: 'Freelance Project', category: 'freelance', amount: 1200, type: 'income' as const },
-  { id: '5', date: '2023-12-10', description: 'Gas Station', category: 'transport', amount: 60, type: 'expense' as const },
-  { id: '6', date: '2023-12-12', description: 'Restaurant Dinner', category: 'food', amount: 85, type: 'expense' as const },
-  { id: '7', date: '2023-12-15', description: 'Freelance Project', category: 'freelance', amount: 1300, type: 'income' as const },
-  { id: '8', date: '2023-12-18', description: 'Movie Tickets', category: 'entertainment', amount: 35, type: 'expense' as const },
-  { id: '9', date: '2023-12-20', description: 'Online Shopping', category: 'shopping', amount: 120, type: 'expense' as const },
-  { id: '10', date: '2023-12-22', description: 'Utility Bills', category: 'utilities', amount: 200, type: 'expense' as const },
-  { id: '11', date: '2023-12-25', description: 'Grocery Store', category: 'food', amount: 130, type: 'expense' as const },
-  { id: '12', date: '2023-12-28', description: 'Transport Pass', category: 'transport', amount: 80, type: 'expense' as const },
-];
-
-const financialTips = [
-  "Try the 50/30/20 rule: 50% for needs, 30% for wants, and 20% for savings and debt repayment.",
-  "Review your subscriptions monthly - you might be paying for services you no longer use.",
-  "Setting up automatic transfers to your savings account can help build wealth without thinking about it.",
-  "Consider tracking every expense for a month to identify spending patterns and potential savings.",
-  "When shopping online, leave items in your cart for 24 hours before purchasing to avoid impulse buying."
+  { id: '2', date: '2023-12-03', description: 'Equipment Purchase', category: 'equipment', amount: 2500, type: 'expense' as const },
+  { id: '3', date: '2023-12-05', description: 'Team Account Fees', category: 'team', amount: 150, type: 'expense' as const },
+  { id: '4', date: '2023-12-08', description: 'Market Sales Revenue', category: 'sales', amount: 1200, type: 'income' as const },
+  { id: '5', date: '2023-12-10', description: 'Cup Purchases', category: 'cups', amount: 60, type: 'expense' as const },
+  { id: '6', date: '2023-12-12', description: 'Membership Fees', category: 'membership', amount: 85, type: 'expense' as const },
+  { id: '7', date: '2023-12-15', description: 'Equipment Rental', category: 'equipment', amount: 1300, type: 'income' as const },
+  { id: '8', date: '2023-12-18', description: 'Team Account Payment', category: 'team', amount: 35, type: 'expense' as const },
+  { id: '9', date: '2023-12-20', description: 'Market Sales Revenue', category: 'sales', amount: 120, type: 'income' as const },
+  { id: '10', date: '2023-12-22', description: 'Cup Purchases', category: 'cups', amount: 200, type: 'expense' as const },
+  { id: '11', date: '2023-12-25', description: 'Membership Renewal', category: 'membership', amount: 130, type: 'expense' as const },
+  { id: '12', date: '2023-12-28', description: 'Equipment Purchase', category: 'equipment', amount: 80, type: 'expense' as const },
 ];
 
 const Dashboard = () => {
@@ -79,13 +65,8 @@ const Dashboard = () => {
     console.log(`Filter changed to: ${period}`);
   };
 
-  // Randomly select a financial tip
-  const randomTip = financialTips[Math.floor(Math.random() * financialTips.length)];
-
   return (
     <div>
-      <FinancialTip tip={randomTip} />
-      
       <TimeFilter onFilterChange={handleTimeFilterChange} />
       
       <CashFlowSummary 
