@@ -16,8 +16,6 @@ import {
   Users, 
   BarChart3, 
   Server,
-  CircleDollarSign,
-  Settings
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -51,19 +49,6 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
     },
   ];
 
-  const userMenuItems = [
-    {
-      title: 'Accounts',
-      url: '/accounts',
-      icon: CircleDollarSign,
-    },
-    {
-      title: 'Settings',
-      url: '/settings',
-      icon: Settings,
-    },
-  ];
-
   return (
     <Sidebar className={cn("transition-all duration-300", 
       sidebarCollapsed ? "w-16" : "w-64"
@@ -72,7 +57,7 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
         {!sidebarCollapsed ? (
           <h1 className="text-xl font-bold tracking-tight">BalanceBeam</h1>
         ) : (
-          <CircleDollarSign size={28} className="text-primary" />
+          <Users size={28} className="text-primary" />
         )}
       </div>
       <SidebarContent>
@@ -89,30 +74,6 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                         location.pathname === item.url || 
                         (item.url !== '/' && location.pathname.startsWith(item.url)) 
                           ? "text-primary font-medium" : "",
-                        sidebarCollapsed ? "justify-center" : ""
-                      )}
-                    >
-                      <item.icon size={20} />
-                      {!sidebarCollapsed && <span>{item.title}</span>}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        
-        <SidebarGroup>
-          {!sidebarCollapsed && <SidebarGroupLabel>User</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {userMenuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link 
-                      to={item.url} 
-                      className={cn("flex items-center space-x-2", 
-                        location.pathname === item.url ? "text-primary font-medium" : "",
                         sidebarCollapsed ? "justify-center" : ""
                       )}
                     >

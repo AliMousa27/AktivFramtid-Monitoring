@@ -60,7 +60,7 @@ export const DonutChart = ({
             if (active && payload && payload.length) {
               const data = payload[0];
               return (
-                <div className="rounded-lg border bg-background p-2 shadow-md">
+                <div className="rounded-lg border bg-background p-2 shadow-sm">
                   <div className="flex flex-col gap-0.5">
                     <p className="text-sm font-medium">{data.name}</p>
                     <p className="text-xs">
