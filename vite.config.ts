@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/aktivFramtid-monitoring/" : "/", // Replace <repository-name> with your GitHub repository name
+  base: mode === "production" ? "/AktivFramtid-Monitoring/" : "/",
   server: {
     host: "::",
     port: 8080,
