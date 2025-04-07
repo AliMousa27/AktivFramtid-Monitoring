@@ -21,14 +21,7 @@ const categoryMap: { [key: string]: string } = {
   equipment: "Equipment",
   sales: "Market Sales",
   account: "Team Account",
-  software: "Software",
-  conference: "Conferences",
-  merchandise: "Merchandise",
   training: "Training",
-  recruitment: "Recruitment",
-  finance: "Finance",
-  marketing: "Marketing",
-  hr: "HR",
 };
 
 // Function to assign categories based on description
@@ -51,27 +44,15 @@ export const users: User[] = [
     purchases: [
       {
         date: "2023-12-01",
-        description: "Annual Team Account License",
-        category: assignCategory("Annual Team Account License"),
+        description: "Memberships",
+        category: assignCategory("Memberships"),
         amount: 3500,
       },
       {
         date: "2023-12-10",
-        description: "Team Building Equipment",
-        category: assignCategory("Team Building Equipment"),
+        description: "Equipment",
+        category: assignCategory("Equipment"),
         amount: 1200,
-      },
-      {
-        date: "2023-11-15",
-        description: "Branded Coffee Cups",
-        category: assignCategory("Branded Coffee Cups"),
-        amount: 450,
-      },
-      {
-        date: "2023-11-05",
-        description: "Developer Conference Membership",
-        category: assignCategory("Developer Conference Membership"),
-        amount: 1800,
       },
     ],
   },
@@ -81,21 +62,9 @@ export const users: User[] = [
     personnummer: "19920322-7851",
     purchases: [
       {
-        date: "2023-12-05",
-        description: "Design Software License",
-        category: assignCategory("Design Software License"),
-        amount: 2800,
-      },
-      {
-        date: "2023-11-20",
-        description: "Drawing Tablets",
-        category: assignCategory("Drawing Tablets"),
-        amount: 3200,
-      },
-      {
         date: "2023-11-10",
-        description: "Designer Cups",
-        category: assignCategory("Designer Cups"),
+        description: "Cups",
+        category: assignCategory("Cups"),
         amount: 350,
       },
       {
@@ -111,18 +80,6 @@ export const users: User[] = [
     name: "Sofia Bergström",
     personnummer: "19871208-9167",
     purchases: [
-      {
-        date: "2023-12-03",
-        description: "Marketing Software Subscription",
-        category: assignCategory("Marketing Software Subscription"),
-        amount: 1950,
-      },
-      {
-        date: "2023-11-25",
-        description: "Exhibition Equipment",
-        category: assignCategory("Exhibition Equipment"),
-        amount: 4200,
-      },
       {
         date: "2023-12-12",
         description: "Marketing Week Items",
@@ -142,12 +99,6 @@ export const users: User[] = [
     name: "Anders Johansson",
     personnummer: "19790831-4436",
     purchases: [
-      {
-        date: "2023-12-07",
-        description: "CRM Software",
-        category: assignCategory("CRM Software"),
-        amount: 2200,
-      },
       {
         date: "2023-11-22",
         description: "Presentation Equipment",
@@ -174,12 +125,6 @@ export const users: User[] = [
     personnummer: "19910423-3982",
     purchases: [
       {
-        date: "2023-12-09",
-        description: "Product Planning Software",
-        category: assignCategory("Product Planning Software"),
-        amount: 2500,
-      },
-      {
         date: "2023-11-28",
         description: "Testing Equipment",
         category: assignCategory("Testing Equipment"),
@@ -204,12 +149,6 @@ export const users: User[] = [
     name: "Erik Sundberg",
     personnummer: "20010223-3182",
     purchases: [
-      {
-        date: "2023-12-11",
-        description: "Accounting Software",
-        category: assignCategory("Accounting Software"),
-        amount: 3150,
-      },
       {
         date: "2023-11-30",
         description: "Office Equipment",
