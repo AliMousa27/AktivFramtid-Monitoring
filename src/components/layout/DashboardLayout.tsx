@@ -12,26 +12,24 @@ const DashboardLayout = () => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AppSidebar sidebarCollapsed={sidebarCollapsed} />
-        <div className="flex-1 flex flex-col min-h-screen">
+        <div className="flex-1 flex flex-col min-h-screen text-left">
           <div
-            className="p-4 border-b flex justify-between items-center"
-            style={{ paddingBottom: "19px" }}
+            className="p-4 flex justify-between items-center"
+            style={{
+              paddingBottom: "19px",
+            }}
           >
             <div className="flex-1 md:ml-4">
               <h1 className="text-xl font-bold">Cash Flow Dashboard</h1>
             </div>
+
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">
                 Last updated: {new Date().toLocaleString()}
               </span>
             </div>
           </div>
-          <main
-            className={cn(
-              "flex-1 container mx-auto py-6 px-4",
-              sidebarCollapsed ? "md:pl-20" : "md:pl-64"
-            )}
-          >
+          <main className="border-t" style={{ padding: 35 }}>
             <Outlet />
           </main>
         </div>
