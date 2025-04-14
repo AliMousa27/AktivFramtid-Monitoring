@@ -52,10 +52,9 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   return (
     <Sidebar
       className={cn(
-        "transition-all duration-300",
+        "transition-all duration-300  bg-aktivGreen-base/5",
         isCollapsed ? "w-16" : "w-64"
       )}
-      style={{ backgroundColor: "#fffce4" }}
     >
       <div className="p-3 flex items-center justify-center h-16 border-b">
         {!isCollapsed ? (
