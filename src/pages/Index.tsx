@@ -3,6 +3,7 @@ import CashFlowSummary from "@/components/dashboard/CashFlowSummary";
 import CashFlowCharts from "@/components/dashboard/CashFlowCharts";
 import TransactionsTable from "@/components/dashboard/TransactionsTable";
 import TimeFilter from "@/components/dashboard/TimeFilter";
+import AppStoreDownloads from "@/components/ui/AppStoreDownloads";
 
 // Mock data - in a real app, this would come from an API
 const mockExpenseData = [
@@ -151,6 +152,7 @@ const Dashboard = () => {
   return (
     <div className="w-full">
       <TimeFilter onFilterChange={handleTimeFilterChange} />
+      <AppStoreDownloads></AppStoreDownloads>
 
       <CashFlowSummary
         earnings={earnings}
