@@ -20,6 +20,12 @@ type SidebarProps = {
 export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
   const location = useLocation();
 
+  // Only apply collapsed state on desktop (md and above)
+  // Always expanded on mobile
+  const isCollapsed = window.matchMedia("(min-width: 768px)").matches
+    ? sidebarCollapsed
+    : false;
+
   const mainMenuItems = [
     {
       title: "Dashboard",
@@ -47,19 +53,24 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
     <Sidebar
       className={cn(
         "transition-all duration-300",
-        sidebarCollapsed ? "w-16" : "w-64"
+        isCollapsed ? "w-16" : "w-64"
       )}
     >
       <div className="p-3 flex items-center justify-center h-16 border-b">
-        {!sidebarCollapsed ? (
-          <h1 className="text-xl font-bold tracking-tight">AktivFramtid</h1>
+        {!isCollapsed ? (
+          //<h1 className="text-xl font-bold tracking-tight">AktivFramtid</h1>
+          <img
+            src="src/assets/images/logo_with_text.png"
+            alt="Logo"
+            className="w-32 h-auto object-contain mx-auto my-4"
+          />
         ) : (
           <Users size={28} className="text-primary" />
         )}
       </div>
       <SidebarContent>
         <SidebarGroup>
-          {!sidebarCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
+          {!isCollapsed && <SidebarGroupLabel>Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => (
@@ -74,11 +85,11 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
                             location.pathname.startsWith(item.url))
                           ? "text-primary font-medium"
                           : "",
-                        sidebarCollapsed ? "justify-center" : ""
+                        isCollapsed ? "justify-center" : ""
                       )}
                     >
                       <item.icon size={20} />
-                      {!sidebarCollapsed && <span>{item.title}</span>}
+                      {!isCollapsed && <span>{item.title}</span>}
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
