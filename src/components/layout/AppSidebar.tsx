@@ -55,10 +55,10 @@ export function AppSidebar({ sidebarCollapsed }: SidebarProps) {
         "transition-all duration-300",
         isCollapsed ? "w-16" : "w-64"
       )}
+      style={{ backgroundColor: "#fffce4" }}
     >
       <div className="p-3 flex items-center justify-center h-16 border-b">
         {!isCollapsed ? (
-          //<h1 className="text-xl font-bold tracking-tight">AktivFramtid</h1>
           <img
             src="src/assets/images/logo_with_text.png"
             alt="Logo"
